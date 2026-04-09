@@ -269,4 +269,3 @@ def test_file_already_mined_check_mtime():
                 pass
             del client
         shutil.rmtree(tmpdir, ignore_errors=True)
-

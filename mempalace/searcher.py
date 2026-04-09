@@ -10,6 +10,7 @@ import logging
 from pathlib import Path
 
 from .chroma_client import get_persistent_client
+
 logger = logging.getLogger("mempalace_mcp")
 
 

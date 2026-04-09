@@ -510,12 +510,15 @@ def test_cmd_compress_dry_run(mock_config_cls, capsys):
     }
     mock_dialect_mod = _make_mock_dialect_module(mock_dialect)
 
-    with patch.dict(
-        "sys.modules",
-        {
-            "mempalace.dialect": mock_dialect_mod,
-        },
-    ), patch("mempalace.cli.get_persistent_client", return_value=mock_client):
+    with (
+        patch.dict(
+            "sys.modules",
+            {
+                "mempalace.dialect": mock_dialect_mod,
+            },
+        ),
+        patch("mempalace.cli.get_persistent_client", return_value=mock_client),
+    ):
         cmd_compress(args)
     out = capsys.readouterr().out
     assert "dry run" in out.lower()
@@ -536,12 +539,15 @@ def test_cmd_compress_with_config(mock_config_cls, tmp_path, capsys):
     mock_dialect = MagicMock()
     mock_dialect_mod = _make_mock_dialect_module(mock_dialect)
 
-    with patch.dict(
-        "sys.modules",
-        {
-            "mempalace.dialect": mock_dialect_mod,
-        },
-    ), patch("mempalace.cli.get_persistent_client", return_value=mock_client):
+    with (
+        patch.dict(
+            "sys.modules",
+            {
+                "mempalace.dialect": mock_dialect_mod,
+            },
+        ),
+        patch("mempalace.cli.get_persistent_client", return_value=mock_client),
+    ):
         cmd_compress(args)
     out = capsys.readouterr().out
     assert "Loaded entity config" in out
@@ -577,12 +583,15 @@ def test_cmd_compress_stores_results(mock_config_cls, capsys):
     }
     mock_dialect_mod = _make_mock_dialect_module(mock_dialect)
 
-    with patch.dict(
-        "sys.modules",
-        {
-            "mempalace.dialect": mock_dialect_mod,
-        },
-    ), patch("mempalace.cli.get_persistent_client", return_value=mock_client):
+    with (
+        patch.dict(
+            "sys.modules",
+            {
+                "mempalace.dialect": mock_dialect_mod,
+            },
+        ),
+        patch("mempalace.cli.get_persistent_client", return_value=mock_client),
+    ):
         cmd_compress(args)
     out = capsys.readouterr().out
     assert "Stored" in out
